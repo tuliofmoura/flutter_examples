@@ -6,6 +6,7 @@ import 'package:shop_example/model/product_model.dart';
 import 'package:shop_example/util/format_util.dart';
 
 const _rowHeight = 100.0;
+const _paddingAll = EdgeInsets.all(16.0);
 
 class ProductTile extends StatelessWidget {
   final ProductModel product;
@@ -27,7 +28,6 @@ class ProductTile extends StatelessWidget {
             ? product.color['splash']
             : Colors.transparent,
         child: InkWell(
-          //borderRadius: _borderRadius,
           highlightColor: product.color['splash'],
           splashColor: product.color['splash'],
           onTap: cart.products.contains(product)
@@ -38,7 +38,7 @@ class ProductTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: _paddingAll,
                   child: Icon(
                     product.iconLocation,
                     size: 60.0,
@@ -71,15 +71,12 @@ class ProductTile extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: _paddingAll,
                   child: Container(
                     child: Row(
-                      /*onPressed: cart.products.contains(product)
-                        ? () => cart.removeProduct(product)
-                        : () => cart.addProduct(product),*/
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: _paddingAll,
                           child: Text(
                             cart.products.contains(product)
                                 ? 'REMOVER'

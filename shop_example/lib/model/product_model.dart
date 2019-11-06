@@ -18,6 +18,7 @@ class ProductModel {
         assert(color != null),
         assert(iconLocation != null);
 
+  ///Products in stock
   static List<ProductModel> get stockList {
     return [
       ProductModel(

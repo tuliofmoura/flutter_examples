@@ -4,13 +4,13 @@ import 'package:shop_example/model/cart_model.dart';
 import 'package:shop_example/util/format_util.dart';
 import 'package:shop_example/views/product_resume_tile.dart';
 
-const _padding = EdgeInsets.all(16.0);
+const _rowHeight = 80.0;
+const _bgColor = Color(0xFFFE5F55);
 
 class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartModel>(context);
-    final totalAmount = cart.totalAmount;
 
     final productsList = ListView.builder(
       itemBuilder: (BuildContext context, int index) {
@@ -22,9 +22,9 @@ class CartScreen extends StatelessWidget {
     );
 
     final totalResume = Container(
-      height: 80,
+      height: _rowHeight,
       width: double.infinity,
-      color: Color(0xFFFE5F55),
+      color: _bgColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

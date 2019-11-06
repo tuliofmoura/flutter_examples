@@ -5,9 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'product_model.dart';
 
 /// A [CartModel] keeps track of a list of [ProductModel]s.
-///
-/// A [CartModel] saves a list of [ProductModel]s and the purchase total amount
-/// (sum of all added products).
 class CartModel extends ChangeNotifier {
   final List<ProductModel> _products = [];
 

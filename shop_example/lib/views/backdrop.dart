@@ -8,6 +8,7 @@ import 'package:shop_example/model/cart_model.dart';
 
 const double _kFlingVelocity = 2.0;
 
+///Basically, this widget represents the shop cart.
 class _BackdropPanel extends StatelessWidget {
   const _BackdropPanel({
     Key key,
@@ -27,14 +28,10 @@ class _BackdropPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 2.0,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(16.0),
-        topRight: Radius.circular(16.0),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          //the view with products count
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onVerticalDragUpdate: onVerticalDragUpdate,
@@ -51,6 +48,7 @@ class _BackdropPanel extends StatelessWidget {
           Divider(
             height: 1.0,
           ),
+          //the view with the shop summary
           Expanded(
             child: child,
           ),
@@ -60,6 +58,7 @@ class _BackdropPanel extends StatelessWidget {
   }
 }
 
+///The application title
 class _BackdropTitle extends AnimatedWidget {
   final Widget frontTitle;
   final Widget backTitle;
@@ -104,9 +103,8 @@ class _BackdropTitle extends AnimatedWidget {
 
 /// Builds a Backdrop.
 ///
-/// A Backdrop widget has two panels, front and back. The front panel is shown
-/// by default, and slides down to show the back panel, from which a user
-/// can make a selection. The user can also configure the titles for when the
+/// A Backdrop widget has two panels, front and back. The back panel is shown
+/// by default. The user can also configure the titles for when the
 /// front or back panel is showing.
 class Backdrop extends StatefulWidget {
   final Widget frontPanel;

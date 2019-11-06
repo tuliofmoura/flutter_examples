@@ -4,6 +4,10 @@ import 'package:shop_example/model/cart_model.dart';
 import 'package:shop_example/model/product_model.dart';
 import 'package:shop_example/util/format_util.dart';
 
+const _bgColor = Color(0xFFEEF5DB);
+const _textSize = 20.0;
+const _rowHeight = 60.0;
+
 class ProductResumeTile extends StatelessWidget {
   final ProductModel product;
 
@@ -17,9 +21,9 @@ class ProductResumeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     var cart = Provider.of<CartModel>(context);
     return Material(
-      color: Color(0xFFEEF5DB),
+      color: _bgColor,
       child: Container(
-        height: 60.0,
+        height: _rowHeight,
         child: Padding(
           padding: const EdgeInsets.only(left: 16.0, top: 16.0, bottom: 16.0),
           child: Row(
@@ -29,7 +33,7 @@ class ProductResumeTile extends StatelessWidget {
                   product.name,
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 20,
+                    fontSize: _textSize,
                   ),
                 ),
               ),
@@ -38,7 +42,7 @@ class ProductResumeTile extends StatelessWidget {
                     ? 'Grátis'
                     : FormatUtil.currencyBRLFormat(product.value),
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: _textSize,
                   fontWeight: FontWeight.bold,
                 ),
               ),

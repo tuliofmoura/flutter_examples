@@ -22,7 +22,7 @@ class ProductScreen extends StatelessWidget {
 
     final textStyle = TextStyle(
       fontSize: 24.0,
-      fontWeight: FontWeight.w900,
+      fontWeight: FontWeight.w700,
       color: Colors.white,
     );
 
