@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_example/quiz.dart';
 import 'package:quiz_example/result.dart';
 
-void main(List<String> args) => runApp(MyApp());
+void main(List<String> args) => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,30 +12,50 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _questionIndex = 0;
+  int _totalScore = 0;
+  int _questionIndex = 0;
   final _questions = [
     {
       'questionText': 'What\'s your favorite color?',
-      'answers': ['Red', 'Blue', 'Green', 'Yellow'],
+      'answers': [
+        {'text': 'Blue', 'score': 10},
+        {'text': 'Red', 'score': 7},
+        {'text': 'Green', 'score': 4},
+        {'text': 'Yellow', 'score': 1},
+      ],
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Dog', 'Cat', 'Tiger', 'Cow'],
+      'answers': [
+        {'text': 'Dog', 'score': 10},
+        {'text': 'Tiger', 'score': 7},
+        {'text': 'Cow', 'score': 4},
+        {'text': 'Cat', 'score': 1},
+      ],
     },
     {
       'questionText': 'What\'s your favorite programing language?',
-      'answers': ['Dart', 'Java', 'JavaScript', 'Python'],
+      'answers': [
+        {'text': 'Dart', 'score': 10},
+        {'text': 'Java', 'score': 7},
+        {'text': 'Python', 'score': 4},
+        {'text': 'JavaScript', 'score': 1},
+      ],
     }
   ];
 
-  void _onPressed() {
+  void _onAnswered(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex++;
     });
-    String msg = _questionIndex < _questions.length
-        ? 'We have more questions!'
-        : 'No more questions!';
-    debugPrint(msg);
+    debugPrint('$_totalScore');
+  }
+
+  void _onRestarted() {
+    _totalScore = 0;
+    _questionIndex = 0;
+    setState(() {});
   }
 
   @override
@@ -49,9 +69,9 @@ class _MyAppState extends State<MyApp> {
             ? Quiz(
                 questions: _questions,
                 questionIndex: _questionIndex,
-                onPressed: _onPressed,
+                answerCallback: _onAnswered,
               )
-            : const Result(),
+            : Result(result: _totalScore, resetCallback: _onRestarted),
       ),
     );
   }
