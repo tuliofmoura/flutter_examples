@@ -6,44 +6,21 @@
 //button that changes that text
 
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets_basic/text.dart';
-import 'package:flutter_widgets_basic/text_control_button.dart';
+import 'package:flutter_widgets_basic/text_control.dart';
 
 void main(List<String> args) => runApp(const MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int _count = 0;
-  String _textToShow = 'Some text here';
-
-  void _onChangeClicked() {
-    setState(() {
-      _count++;
-      _textToShow = 'Clicked $_count times!';
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('My App'),
+          title: const Text('Click count'),
         ),
-        body: Center(
-          child: Column(
-            children: [
-              TextToShow(textToShow: _textToShow),
-              TextControlButton(callback: _onChangeClicked),
-            ],
-          ),
-        ),
+        body: const TextControl(),
       ),
     );
   }
