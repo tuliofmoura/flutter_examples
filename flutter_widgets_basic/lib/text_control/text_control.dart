@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets_basic/text.dart';
+import 'package:flutter_widgets_basic/text_control/text_to_show.dart';
 
 class TextControl extends StatefulWidget {
   const TextControl({Key? key}) : super(key: key);
